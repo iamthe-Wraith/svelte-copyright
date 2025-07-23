@@ -12,6 +12,7 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint ."
 	},
+	"license": "MIT",
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
