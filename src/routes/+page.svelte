@@ -1,3 +1,22 @@
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+    import Copyright from "$lib/Copyright.svelte";
+</script>
+
+<div class="examples-container">
+    <Copyright />
+    <Copyright startingYear={2022} />
+    <Copyright companyName="Stark Industries" />
+    <Copyright companyName="Stark Industries" companyNamePosition="start" />
+    <Copyright companyName="Stark Industries" startingYear={2022} allRightsReserved />
+    <Copyright companyName="Stark Industries" startingYear={2022} allRightsReserved companyNamePosition="start" />
+    <Copyright companyName="Stark Industries" startingYear={2022} endYear={2024} allRightsReserved companyNamePosition="start" />
+    <Copyright companyName="Stark Industries" startingYear={2022} endYear={2024} allRightsReserved companyNamePosition="end" />
+</div>
+
+<style>
+    .examples-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+</style>

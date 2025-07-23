@@ -1,5 +1,6 @@
 {
 	"name": "svelte-copyright",
+	"description": "A Svelte component for displaying a copyright notice",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
@@ -16,7 +17,10 @@
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"!dist/**/*.spec.*",
+		"src/lib",
+		"!src/lib/**/*.test.*",
+		"!src/lib/**/*.spec.*"
 	],
 	"sideEffects": [
 		"**/*.css"
@@ -25,6 +29,10 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"exports": {
+		"./Copyright.svelte": {
+			"types": "./dist/Copyright.svelte.d.ts",
+			"svelte": "./dist/Copyright.svelte"
+		},
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
