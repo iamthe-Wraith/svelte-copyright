@@ -1,58 +1,93 @@
-# Svelte library
+# svelte-copyright
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+A Svelte component for displaying a copyright notice.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## Installation
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+Run the following command to install the `svelte-copyright` in your project.
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+npm install svelte-copyright
 ```
 
-## Developing
+## Props
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+The following Props are available to configure the `<Copyright>` component.
 
-```bash
-npm run dev
+| Prop | Type | Description |
+| `allRightsReserved` | bool | [OPTIONAL] A flag used to determine if the "All rights reserved" text is displayed at the end of the copyright text. (default value: `false`) |
+| `someRightsReserved` | bool | [OPTIONAL] A flag used to determine if the "Some rights reserved" text is displayed at the end of the copyright text. (default value: `false`) |
+| `noRightsReserved` | bool | [OPTIONAL] A flag used to determine if the "No rights reserved" text is displayed at the end of the copyright text. (default value: `false`) |
+| `ownerName` | [OPTIONAL] The name of the copyright owner. |
+| `startingYear` | [OPTIONAL] If provided, will set the starting, or creation year of the copyright range. If not provided, only the end year (or current year if no end year is provided) will be displayed |
+| `endYear` | [OPTIONAL] If provided, will set the end year, or the last year the copyrighted material was updated. (default value: the current year) |
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+
+## Styling the Component
+
+The following CSS variables are available to style the `<Copyright>` component.
+
+| CSS Property | Default Value |
+| :-- | :-- |
+| `--copyright-margin` | 0 |
+| `--copyright-padding` | 0 |
+| `--copyright-font-size` | 1rem |
+| `--copyright-font-weight` | 400 |
+| `--copyright-font-family` | system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif |
+| `--copyright-color` | oklch(0, 0, 0) |
+| `--copyright-line-height` | 1.2rem |
+
+## Examples
+
+```svelte
+<Copyright />
+
+<Copyright startingYear={2022} />
+
+<Copyright companyName="Stark Industries" />
+
+<Copyright
+    companyName="Stark Industries"
+    companyNamePosition="start"
+/>
+
+<Copyright
+    companyName="Stark Industries"
+    startingYear={2022}\
+    allRightsReserved
+/>
+
+<Copyright
+    companyName="Stark Industries"
+    startingYear={2022}
+    endYear={2024}
+    someRightsReserved
+/>
+
+<Copyright
+    companyName="Stark Industries"
+    startingYear={2022}
+    endYear={2024}
+    noRightsReserved
+/>
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
-
-## Building
-
-To build your library:
-
-```bash
-npm run package
 ```
+©2025
 
-To create a production version of your showcase app:
+©2022-2025
 
-```bash
-npm run build
-```
+©2025 Stark Industries
 
-You can preview the production build with `npm run preview`.
+Stark Industries ©2025
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+©2022-2025 Stark Industries All rights reserved
 
-## Publishing
+Stark Industries ©2022-2025 All rights reserved
 
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
+Stark Industries ©2022-2024 All rights reserved
 
-To publish your library to [npm](https://www.npmjs.com):
+©2022-2024 Stark Industries Some rights reserved
 
-```bash
-npm publish
+©2022-2024 Stark Industries No rights reserved
 ```

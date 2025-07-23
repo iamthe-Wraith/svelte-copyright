@@ -1,16 +1,18 @@
 <script lang="ts">
     interface IProps {
         allRightsReserved?: boolean;
-        companyName?: string;
-        companyNamePosition?: 'start' | 'end';
+        someRightsReserved?: boolean;
+        noRightsReserved?: boolean;
+        ownerName?: string;
         startingYear?: number;
         endYear?: number;
     }
 
     let {
         allRightsReserved = false,
-        companyName,
-        companyNamePosition = 'end',
+        someRightsReserved = false,
+        noRightsReserved = false,
+        ownerName,
         startingYear,
         endYear,
     }: IProps = $props();
@@ -23,18 +25,18 @@
 
     let text = $state("");
 
-    if (companyNamePosition === 'start' && companyName) {
-        text += `${companyName} `;
-    }
-
-    text += `©${startingYear && startingYear < year ? `${startingYear}-` : ""}${year}`;
-
-    if (companyNamePosition === 'end' && companyName) {
-        text += ` ${companyName}`;
-    }
+    text += `©${startingYear && startingYear < year ? `${startingYear}-` : ""}${year} ${ownerName}`;
 
     if (allRightsReserved) {
         text += " All rights reserved";
+    }
+
+    if (someRightsReserved) {
+        text += " Some rights reserved";
+    }
+
+    if (noRightsReserved) {
+        text += " No rights reserved";
     }
 </script>
 
@@ -44,12 +46,12 @@
 
 <style>
     p {
-        margin: var(--margin, 0);
-        padding: var(--padding, 0);
-        font-size: var(--font-size, 1rem);
-        font-weight: var(--font-weight, 400);
-        font-family: var(--font-family, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif);
+        margin: var(--copyright-margin, 0);
+        padding: var(--copyright-padding, 0);
+        font-size: var(--copyright-font-size, 1rem);
+        font-weight: var(--copyright-font-weight, 400);
+        font-family: var(--copyright-font-family, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif);
         color: var(--copyright-color, oklch(0, 0, 0));
-        line-height: var(--line-height, 1.5);
+        line-height: var(--copyright-line-height, 1.2rem);
     }
 </style>
